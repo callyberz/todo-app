@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from 'app/hooks';
 import { useDispatch } from 'react-redux';
 import { loadTodos } from 'features/todo/TodoSlice';
-import { TodoList, TodoInputField } from 'components/todo';
+import { TodoInputField } from 'components/TodoInputField';
+import { TodoList } from 'components/TodoList';
 
 export function Todo() {
   const [isFirstLoading, setIsFirstLoading] = useState(false);
@@ -32,13 +33,13 @@ export function Todo() {
     };
 
     fetchTodos();
-  }, []);
+  }, [dispatch]);
 
   return (
-    <div className='App'>
-      {/* <h1>Todo App Demo</h1> */}
+    <div className="App">
+      <h1>Todo App Demo</h1>
+
       <TodoInputField />
-      {/* <input /> */}
       {isFirstLoading && !isError && <>loading...</>}
 
       {!isFirstLoading && !isError && (
@@ -48,9 +49,6 @@ export function Todo() {
       )}
 
       {!isFirstLoading && isError && <h5>{isError}</h5>}
-      {/* <AddTodo />
-      <TodoList />
-      <Footer /> */}
     </div>
   );
 }

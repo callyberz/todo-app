@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-// import { addTodo } from './todoSlice';
+import { addTodo } from 'features/todo/TodoSlice';
 
 export function TodoInputField(): JSX.Element {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ export function TodoInputField(): JSX.Element {
     if (!text.trim()) {
       return;
     }
-    // dispatch(addTodo(text));
+    dispatch(addTodo(text));
 
     setText('');
   }
@@ -24,7 +24,7 @@ export function TodoInputField(): JSX.Element {
   return (
     <form onSubmit={handleSubmit}>
       <input value={text} onChange={handleChange} />
-      <button type='submit'>Add Todo</button>
+      <button type="submit">Add Todo</button>
     </form>
   );
 }

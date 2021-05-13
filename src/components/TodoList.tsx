@@ -1,8 +1,13 @@
 import React from 'react';
-import { TodoItem } from './TodoItem';
+import { TodoListItem } from './TodoListItem';
+import { RootState, AppThunk } from 'app/store';
+
+import { useAppSelector, useAppDispatch } from 'app/hooks';
+
 // import { RootState } from 'app/rootReducer';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { toggleTodo } from './todoSlice';
+// import { useSelector } from 'react-redux';
+// import {} from 'features/todo/TodoSlice';
+
 // import { VisibilityFilter } from 'features/visibilityFilter/visibilityFilterSlice';
 // import { Todo } from './types';
 
@@ -20,20 +25,23 @@ import { TodoItem } from './TodoItem';
 // };
 
 export function TodoList() {
+  const todos = useAppSelector((state: RootState) => state.todo.todos);
+  // useSelector((state: RootState) => state.counter.value)
+  console.log(todos);
   // const dispatch = useDispatch();
   // const todos = useSelector((state: RootState) =>
   //   getVisibleTodos(state.todos, state.visibilityFilter)
   // );
   return (
     <ul>
-      dad
-      {/* {todos.map(todo => (
-        <TodoListItem
-          key={todo.id}
-          {...todo}
-          onClick={() => dispatch(toggleTodo(todo))}
-        />
-      ))} */}
+      {todos &&
+        todos.map((todo) => (
+          <TodoListItem
+            key={todo.id}
+            item={todo}
+            // onClick={() => dispatch(toggleTodo(todo))}
+          />
+        ))}
     </ul>
   );
 }

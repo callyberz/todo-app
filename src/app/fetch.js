@@ -1,3 +1,5 @@
+import React, { Fragment, useState, useEffect } from 'react';
+
 const useDataApi = (initialUrl, initialData) => {
   const [data, setData] = useState(initialData);
   const [url, setUrl] = useState(initialUrl);
@@ -10,9 +12,10 @@ const useDataApi = (initialUrl, initialData) => {
       setIsLoading(true);
 
       try {
-        const result = await axios(url);
+        const result = await fetch(url);
+        const reusltJson = await result.json();
 
-        setData(result.data);
+        setData(reusltJson.data);
       } catch (error) {
         setIsError(true);
       }

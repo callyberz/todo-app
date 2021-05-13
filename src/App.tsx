@@ -1,14 +1,12 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-// import CssBaseline from '@material-ui/core/CssBaseline';
 
 import routes from './routes';
 import './App.css';
 
 function App() {
   return (
-    <div className='App'>
-      {/* <CssBaseline /> */}
+    <div className="App">
       <Switch>
         {routes.map(({ path, exact, component }) => {
           return (
