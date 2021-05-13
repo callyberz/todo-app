@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppThunk, AppDispatch } from 'app/store';
-// import { RootState } from "app/rootReducer";
+import { AppThunk, AppDispatch, RootState } from 'app/store';
 // import { writeTodos, readTodos as fetchTodos } from "api/jsonstore";
 import { Todo } from './types';
 interface TodoType {
   [todos: string]: Todo[];
 }
 
-const initialState: TodoType = {};
+const initialState: TodoType = {
+  todos: []
+};
 
 const todoSlice = createSlice({
   name: 'todos',
@@ -45,8 +46,7 @@ export const { toggleTodo, removeTodo } = todoSlice.actions;
 
 export const loadTodos =
   (data: Todo[]): AppThunk =>
-  async (dispatch: AppDispatch) => {
-    // console.log(data);
+  async (dispatch: AppDispatch, getState: () => RootState) => {
     dispatch(todoSlice.actions.receiveTodos(data));
   };
 

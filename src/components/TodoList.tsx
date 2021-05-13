@@ -1,6 +1,6 @@
 import React from 'react';
 import { TodoListItem } from './TodoListItem';
-import { RootState, AppThunk } from 'app/store';
+// import { RootState, AppThunk } from 'app/store';
 
 import { useAppSelector, useAppDispatch } from 'app/hooks';
 
@@ -25,23 +25,16 @@ import { useAppSelector, useAppDispatch } from 'app/hooks';
 // };
 
 export function TodoList() {
-  const todos = useAppSelector((state: RootState) => state.todo.todos);
+  const todos = useAppSelector((state) => state.todo.todos);
   // useSelector((state: RootState) => state.counter.value)
-  console.log(todos);
+  // console.log(todos);
   // const dispatch = useDispatch();
   // const todos = useSelector((state: RootState) =>
   //   getVisibleTodos(state.todos, state.visibilityFilter)
   // );
   return (
     <ul>
-      {todos &&
-        todos.map((todo) => (
-          <TodoListItem
-            key={todo.id}
-            item={todo}
-            // onClick={() => dispatch(toggleTodo(todo))}
-          />
-        ))}
+      {todos && todos.map((todo) => <TodoListItem key={todo.id} item={todo} />)}
     </ul>
   );
 }
