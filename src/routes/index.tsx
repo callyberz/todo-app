@@ -8,7 +8,7 @@ const routes = [
     component: () => <Home />
   },
   {
-    path: ['/todo'],
+    path: ['/todo/:status(active|completed)?'],
     exact: true,
     component: () => <Todo />
   }

@@ -1,8 +1,18 @@
 import React from 'react';
+import { PURGE } from 'redux-persist';
 import { useDispatch } from 'react-redux';
 import { addTodo } from 'features/todo/TodoSlice';
+import { createUseStyles } from 'react-jss';
+import { CustomFormButton } from './CustomFormButton';
+
+const useStyles = createUseStyles({
+  root: {
+    padding: '8px'
+  }
+});
 
 export function TodoInputField(): JSX.Element {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const [text, setText] = React.useState('');
 
@@ -12,19 +22,32 @@ export function TodoInputField(): JSX.Element {
 
   function handleSubmit(e: any) {
     e.preventDefault();
-
     if (!text.trim()) {
       return;
     }
-    dispatch(addTodo(text));
 
+    dispatch(addTodo(text));
     setText('');
   }
 
+  function onClearClick() {
+    dispatch({
+      type: PURGE,
+      key: 'root',
+      result: () => {
+        window.location.reload();
+      }
+    });
+  }
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={classes.root}>
       <input value={text} onChange={handleChange} />
-      <button type="submit">Add Todo</button>
+      <CustomFormButton text={'Add Todo'} isForm />
+      <CustomFormButton
+        text={'Clear persisted data'}
+        handleOnClick={onClearClick}
+      />
     </form>
   );
 }
