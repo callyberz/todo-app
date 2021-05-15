@@ -16,7 +16,6 @@ import {
   REGISTER
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import counterReducer from '../features/counter/counterSlice';
 import todoReducer from '../features/todo/TodoSlice';
 
 const persistConfig = {
@@ -26,7 +25,6 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-  counter: counterReducer,
   todo: todoReducer
 });
 

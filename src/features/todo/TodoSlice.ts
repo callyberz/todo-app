@@ -2,16 +2,9 @@ import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { AppThunk, AppDispatch, RootState } from 'app/store';
 import { fetchTodos } from 'api/todoApi';
 import { Todo } from './types';
-// interface TodoType {
-//   [todos: string]: Todo[];
-// }
 
 type TodosState = {
-  // In `status` we will watch
-  // if todos are being loaded.
   status: 'loading' | 'idle';
-
-  // `error` will contain an error message.
   error: string | null;
   todos: Todo[];
 };

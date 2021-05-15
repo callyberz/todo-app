@@ -17,14 +17,6 @@ const useStyles = createUseStyles({
     flexWrap: 'nowrap'
   },
   checkBoxWrapper: { padding: '8px', margin: 'auto' },
-  checkBox: {
-    position: 'relative',
-    display: 'flex',
-    margin: '.6em 0',
-    alignItems: 'center',
-    color: '#9e9e9e',
-    transition: 'color 250ms cubic-bezier(.4,.0,.23,1)'
-  },
   buttonWrapper: {
     margin: 'auto'
   },
@@ -49,8 +41,7 @@ const useStyles = createUseStyles({
     transition: 'transform 0.7s ease-out',
     '&::after': {
       content: "'x'"
-    },
-    '&:hover': {}
+    }
   }
 });
 
@@ -76,7 +67,6 @@ export function TodoListItem({ item }: ItemType) {
       <div className={classes.itemContainer}>
         <div className={classes.checkBoxWrapper}>
           <input
-            className={classes.checkBox}
             type="checkbox"
             checked={completed}
             onChange={handleCheckBoxOnChange}

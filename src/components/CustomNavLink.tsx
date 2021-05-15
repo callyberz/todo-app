@@ -9,14 +9,17 @@ const useStyles = createUseStyles({
   },
   linkItem: {
     textDecoration: 'none',
-    color: '#000'
+    color: '#000',
+    '&:hover': {
+      borderBottom: '2px solid'
+    }
   }
 });
 
 const paths = [
-  { label: 'All', path: '/todo' },
-  { label: 'Active', path: '/todo/active' },
-  { label: 'Completed', path: '/todo/completed' }
+  { label: 'All', path: '/' },
+  { label: 'Active', path: '/active' },
+  { label: 'Completed', path: '/completed' }
 ];
 
 interface NavLinkType {}
