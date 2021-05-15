@@ -7,9 +7,9 @@ import { createUseStyles } from 'react-jss';
 const useStyles = createUseStyles({
   root: {
     marginBottom: '1vh',
-    border: '1px solid',
+    border: '1px solid #e6e6e6',
     borderRadius: '8px',
-    boxShadow: '2px 2px 2px #8888'
+    boxShadow: '1px 1px 1px 1px #ccc'
   },
   itemContainer: {
     width: '100%',
